@@ -1,0 +1,52 @@
+---
+title: "Webpage using Leaflet"
+author: "Anmol Bhojwani"
+date: "23 October, 2020"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+**Overview**
+This webpage is being created with R  markdown using Leaflet library.
+It is the assignment from Coursera's Data Science specialization from John Hopkins University.
+
+**Background**
+Leaflet is a library used to create mobile-friendly interactive maps. It is a leading open-source Javascript(JS) library.
+Weight=38 KB of Javascript(JS).
+Its features include simplicity, performance and usability.
+Most developers use this as it has different mapping features.
+
+# Today date
+format(Sys.Date(),"%m-%d-%Y")
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Leaflet map:
+Creating  an object using leaflet map.
+```{r cars}
+library(leaflet)
+MaP. <- leaflet() %>% addTiles()
+```
+
+Now, lets create a marker. The marker will be created with a picture of Benrath Palace and a link to its homepage
+Create a marker with a picture of Benrath Palace and a link to its homepage.
+```{r}
+benrathIcon <- makeIcon(
+   iconUrl = "https://image.shutterstock.com/image-photo/aerial-dusseldorf-germany-beneath-castle-600w-1319496629.jpg",
+   iconWidth = 30*408/255, iconHeight = 30,
+   iconAnchorX = 30*408/255/2, iconAnchorY = 30/2
+)
+```
+Now, let's add the marker to the map
+Then, displaying the map.
+```{r}
+benrathPopup. <- c("<a href= 'http://www.schloss-benrath.de/welcome/?L=1' >Benrath Palace<br><img src='https://image.shutterstock.com/image-photo/aerial-dusseldorf-germany-beneath-castle-600w-1319496629.jpg' width='210' height='132'  alt='Foto Corps de Logis' title='Foto Corps de Logi'></a>")
+MaP. %>%
+   addTiles() %>%
+   addMarkers(lat=51.161027, lng=6.870550, popup = benrathPopup.)
+```
